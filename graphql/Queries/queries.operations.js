@@ -13,6 +13,7 @@ export const GET_USERS = {
 // ===========================================
 export const GET_NOTES = {
     type: new GraphQLList(NoteType),
+    
     resolve: () => {
         return noteModel.find()
     }

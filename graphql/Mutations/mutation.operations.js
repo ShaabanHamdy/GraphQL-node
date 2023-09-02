@@ -18,7 +18,9 @@ export const CREATE_USER = {
         return await userModel.create({ name, email, mobile, password })
     }
 }
+
 // ====================================================
+
 export const CREATE_NOTE = {
     type: NoteType,
     args: {

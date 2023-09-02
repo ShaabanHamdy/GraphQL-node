@@ -17,11 +17,9 @@ export const UserType = new GraphQLObjectType({
 export const NoteType = new GraphQLObjectType({
     name: "Note",
     fields: () => ({
+        id: { type: GraphQLString },
         title: { type: GraphQLString },
         description: { type: GraphQLString },
 
     })
 })
-
-
-
