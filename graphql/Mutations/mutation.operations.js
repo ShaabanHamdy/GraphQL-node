@@ -1,7 +1,7 @@
-import {  GraphQLString } from "graphql";
-import { NoteType, UserType } from "../TypeDefs/User.js";
+import { GraphQLString } from "graphql";
+import { NoteType, UserType } from "../TypeDefs/schema.types.js";
 import { userModel } from "../../DB/models/user.model.js";
-import productModel from "../../DB/models/product.model.js";
+import noteModel from "../../DB/models/note.model.js";
 
 
 
@@ -27,19 +27,19 @@ export const CREATE_NOTE = {
     },
     resolve: async (parent, args) => {
         let { title, description } = args
-        return await productModel.create({ title, description })
+        return await noteModel.create({ title, description })
     }
 }
 // ===========================================================
 
-export const DELETE_USER = {
+export const DELETE_NOTE = {
     type: UserType,
     args: {
         id: { type: GraphQLString }
     },
     resolve: async (parent, args) => {
         let { id } = args
-        return await userModel.deleteOne({_id:id})
+        return await noteModel.deleteOne({ _id: id })
     }
 }
 
