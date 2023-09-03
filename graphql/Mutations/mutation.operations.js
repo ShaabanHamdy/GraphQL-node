@@ -35,13 +35,28 @@ export const CREATE_NOTE = {
 // ===========================================================
 
 export const DELETE_NOTE = {
-    type: UserType,
+    type: NoteType,
     args: {
         id: { type: GraphQLString }
     },
     resolve: async (parent, args) => {
         let { id } = args
         return await noteModel.deleteOne({ _id: id })
+    }
+}
+
+// ===========================================================
+
+export const UPDATE_NOTE = {
+    type: NoteType,
+    args: {
+        id: { type: GraphQLString },
+        title: { type: GraphQLString },
+        description: { type: GraphQLString }
+    },
+    resolve: async (parent, args) => {
+        let { id, title, description } = args
+        return await noteModel.findOneAndUpdate({ _id: id }, { title, description })
     }
 }
 
